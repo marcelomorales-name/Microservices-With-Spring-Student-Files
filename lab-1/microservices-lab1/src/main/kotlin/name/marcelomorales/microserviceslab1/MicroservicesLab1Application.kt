@@ -6,12 +6,17 @@ import org.springframework.boot.runApplication
 import javax.annotation.PostConstruct
 
 @SpringBootApplication
-class MicroservicesLab1Application(@Autowired val repo : TeamRepository) {
+class MicroservicesLab1Application(
+        @Autowired val countryRepository : CountryRepository,
+        @Autowired val cityRepository : CityRepository) {
 
     @PostConstruct
-    fun init() = repo.saveAll(listOf(
-            Team(null, "Bolivar", null),
-            Team(null, "The Strongest", "Tiger")))
+    fun init() {
+        val country = Country("CHL", "Chile", Continent.SOUTH_AMERICA)
+        countryRepository.saveAll(listOf(country))
+
+        cityRepository.saveAll(listOf(City(null, "Santiago", country, "RM", 7000000)))
+    }
 }
 
 

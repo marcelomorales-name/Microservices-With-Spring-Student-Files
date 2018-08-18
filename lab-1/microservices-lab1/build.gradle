@@ -1,7 +1,7 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.2.50'
-		springBootVersion = '2.0.3.RELEASE'
+		kotlinVersion = '1.2.60'
+		springBootVersion = '2.0.4.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -53,5 +53,6 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	compile("org.jetbrains.kotlin:kotlin-reflect")
 	runtime('org.apache.derby:derby')
+	runtime('javax.xml.bind:jaxb-api')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

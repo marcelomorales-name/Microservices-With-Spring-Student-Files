@@ -2,6 +2,7 @@
 /build/
 /gradle/
 !gradle/wrapper/gradle-wrapper.jar
+derby.log
 
 ### STS ###
 .apt_generated

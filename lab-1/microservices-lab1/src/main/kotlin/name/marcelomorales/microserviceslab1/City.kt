@@ -10,7 +10,7 @@ import javax.persistence.*
 data class City(
         @Id @GeneratedValue() val id : Long?,
         val name : String,
-        @ManyToOne(optional = false) @JoinColumn(name = "countrycode") val country: Country,
+        @ManyToOne(optional = false) @JoinColumn(name = "country_code") val country: Country,
         val district : String,
         val population : Long
 )

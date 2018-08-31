@@ -55,12 +55,21 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Spring Team seems to have forgotten about this dependency, needed to run test: -->
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+		</dependency>
+
 		<!-- Allow for automatic restarts when classpath contents change. -->
-	    <dependency>
+		<!-- Inclusion of DevTools here causes a large amount of extraneous log output. -->
+<!-- 	    
+		<dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-devtools</artifactId>
 	        <optional>true</optional>
-	    </dependency>
+	    </dependency> 
+-->
 	</dependencies>
 	
 	<build>

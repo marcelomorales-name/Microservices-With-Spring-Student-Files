@@ -61,7 +61,7 @@ spring.application.name=lab-3-client
 spring.cloud.config.uri=http://localhost:8001  
 server.port=8002
 ```
-> (Note that this file must be "boostrap" -- not "application" -- so that it is read early in the application startup process.  The server.port could be specified in either file, but the URI to the config server affects the startup sequence.)_
+> (Note that this file must be "bootstrap" -- not "application" -- so that it is read early in the application startup process.  The server.port could be specified in either file, but the URI to the config server affects the startup sequence.)_
 
 13. Add a REST controller to obtain and display the lucky word:
 
@@ -80,11 +80,22 @@ server.port=8002
 
 14.  Start your client.  Open [http://localhost:8002/lucky-word](http://localhost:8002/lucky-word).  You should see the lucky word message in your browser.
 
+> (Note: if you receive an error, and your server (above) is working properly, first confirm that your client is actually contacting your server.  The Client's console output should contain lines similar to this:
+
+
+```
+    ... c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8001
+    ... c.c.c.ConfigServicePropertySourceLocator : Located environment: name=lab-3-client, profiles=[default], label=null, version=d200aa331ac9945354579204ea816157251059f6, state=null
+    ... b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='configClient'}, ...]}
+```
+    
+> If you do not see these lines, your client is NOT contacting your server.  Check the items above (application name, config server URI, name / location of your config files, etc.) before proceeding.  
+
   **BONUS - Profiles:**
 
 15. Create a separate file in your GitHub repository called "lab-3-client-northamerica.yml” (or .properties).  Populate it with the "lucky-word" key and a different value than used in the original file.
 
-16. Stop the client application.  Modify the boostrap file to contain a key of spring.profiles.active: northamerica.  Save, and restart your client.  Access the URL.  Which lucky word is displayed?  (You could also run the application with -Dspring.profiles.active=northamerica rather than changing the bootstrap file)
+16. Stop the client application.  Modify the bootstrap file to contain a key of spring.profiles.active: northamerica.  Save, and restart your client.  Access the URL.  Which lucky word is displayed?  (You could also run the application with -Dspring.profiles.active=northamerica rather than changing the bootstrap file)
 
 ### Reflection:  
 1. Notice that the client needed some dependencies for Spring Cloud, and the URI of the Spring Cloud server, but no code.
